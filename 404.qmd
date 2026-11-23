@@ -1,0 +1,42 @@
+---
+title: ""
+description: "Página no encontrada"
+page-layout: custom
+toc: false
+---
+
+<section class="cb-hero-section">
+<div class="cb-container">
+<div class="cb-hero-grid">
+<div class="cb-hero-content">
+<div class="cb-hero-name-wrap">
+<span class="cb-hero-ghost" aria-hidden="true">404</span>
+    <h1 class="cb-hero-name">404</h1>
+</div>
+<p class="cb-hero-subtitle">
+    <em>Página no encontrada / Page Not Found</em>
+</p>
+<p class="cb-hero-bio">
+    El recurso o enlace que buscas no existe, ha sido movido o cambió de dirección.
+</p>
+<div class="cb-cta-row" style="margin-top: 2rem;">
+<a href="index.html" class="cb-btn cb-btn-primary">
+    <i class="bi bi-house-door"></i> Ir al Inicio
+</a>
+<a href="projects/index.html" class="cb-btn cb-btn-outline">
+    <i class="bi bi-folder2-open"></i> Proyectos
+</a>
+<a href="blog/index.html" class="cb-btn cb-btn-outline">
+    <i class="bi bi-book"></i> Blog
+</a>
+</div>
+<div class="cb-divider"></div>
+</div>
+<div class="cb-hero-photo">
+<div class="cb-profile-ring" style="display: flex; align-items: center; justify-content: center;">
+<img src="assets/website/404.gif" alt="Christian Badillo" class="cb-profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+</div>
+</div>
+</div>
+</div>
+</section>

@@ -1,0 +1,643 @@
+/* ═══════════════════════════════════════════════════════════════
+   custom.css — Christian Badillo Portfolio
+   Capa de CSS puro sobre darkly + styles-dark.scss.
+   Cubre: scrollbar, selección de texto, elementos específicos
+   de Quarto que SCSS no alcanza limpiamente, y detalles finales.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Tokens del tema oscuro ─────────────────────────────────── */
+:root {
+  --cb-gold:       #C9A227;
+  --cb-gold-dim:   rgba(201, 162, 39, 0.18);
+  --cb-bg:         #12161A;
+  --cb-bg-card:    #1A2030;
+  --cb-text:       #CDD5E0;
+  --cb-text-muted: #7A8BA0;
+  --cb-border:     rgba(255, 255, 255, 0.08);
+  --cb-navy:       #0D1521;
+}
+
+
+/* ─── Scrollbar (Webkit + Firefox) ───────────────────────────── */
+/* La barra es parte del UI — que se vea como parte del diseño */
+
+::-webkit-scrollbar               { width: 6px; height: 6px; }
+::-webkit-scrollbar-track         { background: var(--cb-bg); }
+::-webkit-scrollbar-thumb         { background: rgba(201, 162, 39, 0.35); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover   { background: rgba(201, 162, 39, 0.6); }
+::-webkit-scrollbar-corner        { background: var(--cb-bg); }
+
+/* Firefox */
+* { scrollbar-width: thin; scrollbar-color: rgba(201,162,39,0.35) var(--cb-bg); }
+
+
+/* ─── Selección de texto ──────────────────────────────────────── */
+::selection      { background: rgba(201, 162, 39, 0.22); color: #E4E8EE; }
+::-moz-selection { background: rgba(201, 162, 39, 0.22); color: #E4E8EE; }
+
+
+/* ─── Elementos Quarto — ajustes finos ────────────────────────── */
+
+/* Barra de búsqueda (ícono lupa en la navbar) */
+#quarto-search .aa-DetachedSearchButton {
+  color: var(--cb-text-muted);
+  border: none;
+  background: transparent;
+}
+
+/* Overlay de búsqueda */
+.aa-DetachedOverlay,
+.aa-Panel {
+  background: #0D1117 !important;
+  border: 1px solid var(--cb-border) !important;
+}
+
+.aa-Input {
+  background: #1A2030 !important;
+  color: var(--cb-text) !important;
+  border-color: var(--cb-border) !important;
+}
+
+.aa-Item[aria-selected="true"],
+.aa-Item:hover {
+  background: var(--cb-gold-dim) !important;
+}
+
+.aa-ItemContentTitle mark {
+  color: var(--cb-gold);
+  background: transparent;
+  font-weight: 600;
+}
+
+
+/* ─── Navbar — refinamientos que flatly/darkly no deja limpios ── */
+
+/* Quita el fondo blanco que flatly inyecta en el toggler mobile */
+.navbar-toggler {
+  border-color: var(--cb-border) !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(0.8);
+}
+
+/* Menú mobile: mismo fondo que la navbar */
+.navbar-collapse {
+  background: #0D1117;
+  padding: 0.5rem 1rem 1rem;
+}
+
+
+/* ─── Contenido de artículos ──────────────────────────────────── */
+
+/* Separadores horizontales */
+hr {
+  border-color: var(--cb-border);
+  opacity: 1;
+}
+
+/* Tablas */
+.table {
+  --bs-table-bg:           transparent;
+  --bs-table-border-color: var(--cb-border);
+  --bs-table-color:        var(--cb-text);
+  font-size: 0.9rem;
+}
+
+.table thead th {
+  color: #E4E8EE;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(201, 162, 39, 0.3);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+}
+
+.table tbody tr:hover td {
+  background: rgba(255,255,255,0.025);
+}
+
+
+/* ─── Paginación del blog ─────────────────────────────────────── */
+
+.pagination .page-link {
+  background: transparent;
+  border-color: var(--cb-border);
+  color: var(--cb-text-muted);
+  font-size: 0.85rem;
+}
+
+.pagination .page-link:hover {
+  background: var(--cb-gold-dim);
+  border-color: var(--cb-gold);
+  color: var(--cb-gold);
+}
+
+.pagination .page-item.active .page-link {
+  background: var(--cb-gold);
+  border-color: var(--cb-gold);
+  color: #0D1521;
+}
+
+
+/* ─── Metadatos de post (fecha, autor, tiempo de lectura) ─────── */
+
+.quarto-title-meta {
+  font-size: 0.8rem;
+  color: var(--cb-text-muted);
+  border-top: 1px solid var(--cb-border);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.quarto-title-meta-heading {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cb-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.quarto-title-meta-contents {
+  color: var(--cb-text);
+}
+
+
+/* ─── Categorías / tags en posts ─────────────────────────────── */
+
+.quarto-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.quarto-category {
+  /* .quarto-category ya está en el SCSS; aquí solo reforzamos
+     el cursor para la versión del listado de blog */
+  cursor: default;
+}
+
+
+/* ─── Encabezados de sección con línea sutil ──────────────────── */
+/* Solo en artículos, no en la landing */
+
+article h2 {
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--cb-border);
+  margin-top: 2.5rem;
+}
+
+article h3 {
+  margin-top: 2rem;
+}
+
+
+/* ─── Imágenes en posts ───────────────────────────────────────── */
+
+article img {
+  border-radius: 4px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Figura con caption */
+figure figcaption {
+  color: var(--cb-text-muted);
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+
+/* ─── Footnotes ───────────────────────────────────────────────── */
+
+.footnotes {
+  border-top: 1px solid var(--cb-border);
+  margin-top: 3rem;
+  padding-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--cb-text-muted);
+}
+
+.footnote-back {
+  color: var(--cb-gold);
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+
+/* ─── Botón "volver arriba" ───────────────────────────────────── */
+
+#quarto-back-to-top {
+  background: #1A2030;
+  border: 1px solid var(--cb-border);
+  color: var(--cb-text-muted);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+#quarto-back-to-top:hover {
+  color: var(--cb-gold);
+  border-color: var(--cb-gold);
+}
+
+
+/* ─── Impresión ───────────────────────────────────────────────── */
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #1A2435 !important;
+  }
+
+  .navbar,
+  .nav-footer,
+  #TOC,
+  .cb-hero-section,
+  .cb-about-section {
+    display: none !important;
+  }
+
+  a { color: #1A2435 !important; text-decoration: underline !important; }
+  code { border: 1px solid #ccc; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SECCIÓN — cabecera compartida (blog, projects, talks)
+   ═══════════════════════════════════════════════════════════════ */
+
+.cb-section-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 0;
+}
+
+.cb-section-title {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 400;
+  color: #E4E8EE;
+  margin-bottom: 0.4rem;
+  line-height: 1.1;
+}
+
+.cb-section-subtitle {
+  color: var(--cb-text-muted);
+  font-size: 1rem;
+  max-width: 58ch;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BLOG — listing de Quarto
+   Quarto genera .quarto-listing > .list.quarto-listing-default
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Filtro de categorías */
+.quarto-listing-category-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--cb-text-muted);
+  margin-bottom: 0.75rem;
+  margin-top: 2rem;
+}
+
+.quarto-listing-category .category {
+  display: block;
+  padding: 0.3rem 0;
+  font-size: 0.85rem;
+  color: var(--cb-text-muted);
+  border-bottom: 1px solid var(--cb-border);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.quarto-listing-category .category:hover,
+.quarto-listing-category .category.active {
+  color: var(--cb-gold);
+}
+
+.quarto-listing-category .category .quarto-category-count {
+  float: right;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Layout del post en el listado */
+.quarto-post {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0 1.75rem;
+  border-bottom: 1px solid var(--cb-border);
+  padding: 1.5rem 0;
+  align-items: start;
+}
+
+.quarto-post:first-child { padding-top: 0; }
+.quarto-post:last-child  { border-bottom: none; }
+
+/* Columna izquierda: fecha + tiempo de lectura */
+.quarto-post .metadata {
+  padding-top: 0.2rem;
+  text-align: right;
+}
+
+.quarto-post .listing-date {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--cb-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.quarto-post .listing-reading-time {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--cb-text-muted);
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+
+/* Columna derecha: título + descripción + categorías */
+.quarto-post .body { min-width: 0; }
+
+.quarto-post .listing-title {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+}
+
+.quarto-post .listing-title a {
+  color: #E4E8EE;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.quarto-post .listing-title a:hover { color: var(--cb-gold); }
+
+.quarto-post .listing-description {
+  color: var(--cb-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  margin-bottom: 0.6rem;
+  max-width: 60ch;
+}
+
+/* Tags del post */
+.quarto-post .listing-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.quarto-post .listing-category {
+  font-family: "Fira Code", monospace;
+  font-size: 0.72rem;
+  background: rgba(58, 95, 138, 0.2);
+  color: #7EB8F7;
+  border: 1px solid rgba(58, 95, 138, 0.3);
+  border-radius: 2px;
+  padding: 0.15em 0.5em;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.quarto-post .listing-category:hover {
+  background: rgba(58, 95, 138, 0.35);
+}
+
+/* Responsive blog listing */
+@media (max-width: 560px) {
+  .quarto-post {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .quarto-post .metadata {
+    text-align: left;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PROYECTOS — status badges y filtro
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Estado del proyecto */
+.cb-project-meta {
+  margin-bottom: 0.5rem;
+}
+
+.cb-status {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.cb-status-active    { color: #5EAA7A; }  /* verde suave */
+.cb-status-wip       { color: var(--cb-gold); }
+.cb-status-completed { color: var(--cb-text-muted); }
+
+/* Barra de filtro */
+.cb-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.cb-filter-btn {
+  background: transparent;
+  border: 1px solid var(--cb-border);
+  color: var(--cb-text-muted);
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-family: "Inter", sans-serif;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.cb-filter-btn:hover {
+  color: var(--cb-text);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.cb-filter-btn.cb-filter-active {
+  color: var(--cb-gold);
+  border-color: var(--cb-gold);
+  background: rgba(201, 162, 39, 0.07);
+}
+
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PROYECTOS — Quarto type: grid listing
+   Quarto genera Bootstrap cards dentro de .quarto-listing-grid.
+   Sobreescribimos sus estilos para que encajen con el tema oscuro.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Contenedor del grid */
+.quarto-listing-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  container-type: inline-size;
+}
+
+@container (max-width: 700px) {
+  .quarto-listing-grid { grid-template-columns: 1fr; }
+}
+@container (max-width: 900px) {
+  .quarto-listing-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Card — resetear Bootstrap, aplicar nuestro estilo */
+.quarto-listing-grid .quarto-grid-item.card {
+  background:    #1A2030 !important;
+  border:        1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 6px !important;
+  box-shadow:    none !important;
+  transition:    border-color 0.18s, transform 0.18s;
+  display:       flex;
+  flex-direction: column;
+}
+
+.quarto-listing-grid .quarto-grid-item.card:hover {
+  border-color: #3A5F8A !important;
+  transform: translateY(-2px);
+}
+
+/* El <a> que envuelve la card no debe tener decoración */
+.quarto-listing-grid .quarto-grid-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Cuerpo de la card */
+.quarto-listing-grid .card-body.post-contents {
+  padding: 1.4rem 1.4rem 0.75rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Título */
+.quarto-listing-grid .listing-title {
+  font-family: "DM Serif Display", Georgia, serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.25 !important;
+  color: #E4E8EE !important;
+  margin-bottom: 0 !important;
+  transition: color 0.15s;
+}
+
+.quarto-listing-grid .quarto-grid-item:hover .listing-title {
+  color: var(--cb-gold) !important;
+}
+
+/* Descripción */
+.quarto-listing-grid .listing-description {
+  color: var(--cb-text-muted) !important;
+  font-size: 0.865rem !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+  flex-grow: 1;
+  /* Clamp a 3 líneas — mantiene las cards alineadas en el grid */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Pie de card: fecha + categorías */
+.quarto-listing-grid .card-footer {
+  background: transparent !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 0.75rem 1.4rem 1.1rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Fecha — discreta */
+.quarto-listing-grid .listing-date {
+  font-size: 0.72rem !important;
+  color: var(--cb-text-muted) !important;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+/* Categorías — mismo tratamiento que .tech-tag del SCSS */
+.quarto-listing-grid .listing-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.quarto-listing-grid .listing-category {
+  font-family: "Fira Code", monospace !important;
+  font-size: 0.7rem !important;
+  background: rgba(58, 95, 138, 0.18) !important;
+  color: #7EB8F7 !important;
+  border: 1px solid rgba(58, 95, 138, 0.28) !important;
+  border-radius: 2px !important;
+  padding: 0.15em 0.5em !important;
+  text-decoration: none !important;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.quarto-listing-grid .listing-category:hover {
+  background: rgba(58, 95, 138, 0.32) !important;
+}
+
+/* ─── Sidebar de categorías (filtro nativo de Quarto) ─────── */
+
+#quarto-margin-sidebar .quarto-listing-category-title {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--cb-text-muted);
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+#quarto-margin-sidebar .quarto-listing-category .category {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  font-size: 0.83rem;
+  color: var(--cb-text-muted);
+  border-bottom: 1px solid var(--cb-border);
+  text-decoration: none;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+
+#quarto-margin-sidebar .quarto-listing-category .category:hover,
+#quarto-margin-sidebar .quarto-listing-category .category.active {
+  color: var(--cb-gold);
+}
+
+#quarto-margin-sidebar .quarto-listing-category .category .quarto-category-count {
+  font-size: 0.72rem;
+  opacity: 0.5;
+  font-variant-numeric: tabular-nums;
+}

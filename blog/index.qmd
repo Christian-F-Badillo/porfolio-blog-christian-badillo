@@ -1,0 +1,29 @@
+---
+title: ""
+page-layout: article
+toc: false
+listing:
+  id: blog-posts
+  # Los posts van en blog/posts/ — cada uno en su propia carpeta
+  # Ejemplo: blog/posts/mi-primer-post/index.qmd
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [date, title, description, categories, reading-time]
+  feed: true
+---
+
+<div class="cb-section-header">
+  <h1 class="cb-section-title">Blog</h1>
+  <p class="cb-section-subtitle">
+    Notas técnicas, exploraciones y aprendizajes sobre ciencia de datos,
+    programación de sistemas y desarrollo de software.
+  </p>
+  <div class="cb-divider"></div>
+</div>
+
+::: {#blog-posts}
+:::

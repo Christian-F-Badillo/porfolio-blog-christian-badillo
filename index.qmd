@@ -1,0 +1,88 @@
+---
+title: ""
+description: "Christian Badillo — Científico de datos y desarrollador independiente"
+page-layout: custom
+toc: false
+---
+
+<section class="cb-hero-section">
+<div class="cb-container">
+<div class="cb-hero-grid">
+<div class="cb-hero-content">
+<div class="cb-hero-name-wrap">
+<span class="cb-hero-ghost" aria-hidden="true">Christian Badillo</span>
+<h1 class="cb-hero-name">Christian Badillo</h1>
+</div>
+<p class="cb-hero-subtitle">
+<em>Científico de datos, desarrollador independiente.</em>
+</p>
+<p class="cb-hero-bio">
+Especializado en análisis de datos, visualización y programación de sistemas. Construyo herramientas reproducibles que unen la precisión técnica con la claridad analítica.
+</p>
+<div class="cb-social-row">
+<a href="mailto:cris.badillo1408@gmail.com" class="cb-social-icon" aria-label="Email">
+<i class="bi bi-envelope"></i>
+</a>
+<a href="https://github.com/Christian-F-Badillo" class="cb-social-icon" aria-label="GitHub" target="_blank" rel="noopener">
+<i class="bi bi-github"></i>
+</a>
+<a href="htttps://www.linkedin.com/in/christian-badillo" class="cb-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
+<i class="bi bi-linkedin"></i>
+</a>
+</div>
+<div class="cb-divider">
+</div>
+</div>
+<div class="cb-hero-photo">
+<div class="cb-profile-ring">
+<img src="assets/profile/chris.png" alt="Christian Badillo" class="cb-profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="cb-profile-placeholder" style="display:none;">CB</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="cb-about-section">
+<div class="cb-container cb-about-inner">
+<p class="cb-drop-cap">
+Soy un <strong>desarrollador independiente</strong> y científico de datos con enfoque en <em>programación de sistemas</em> y construcción de herramientas de análisis. Combino precisión técnica con claridad analítica para entregar proyectos reproducibles, bien documentados y orientados a resolver problemas reales.
+</p>
+<blockquote class="cb-availability">
+  <p>
+    <em>Estoy disponible para proyectos de</em>
+    <strong>ciencia de datos</strong>
+    <em>y desarrollo de software, tanto en modalidad de consultoría
+    como de colaboración a largo plazo.</em>
+  </p>
+</blockquote>
+
+<div class="cb-cta-row">
+<a href="mailto:cris.badillo1408@gmail.com" class="cb-btn cb-btn-primary">
+    <i class="bi bi-envelope"></i> Contactar
+</a>
+<a href="projects/index.qmd" class="cb-btn cb-btn-outline">
+    <i class="bi bi-folder2-open"></i> Proyectos
+</a>
+<a href="blog/index.qmd" class="cb-btn cb-btn-outline">
+    <i class="bi bi-book"></i> Blog
+</a>
+<a href="documents/cv.pdf" class="cb-btn cb-btn-outline" target="_blank">
+    <i class="bi bi-file-earmark-person"></i> Curriculum Vitae
+</a>
+</div>
+<div class="cb-stats-bar">
+<div class="cb-stat">
+<span class="cb-stat-number">1+</span>
+<span class="cb-stat-label">años de experiencia</span>
+</div>
+<div class="cb-stat">
+<span class="cb-stat-number">5+</span>
+<span class="cb-stat-label">proyectos completados</span>
+</div>
+<div class="cb-stat">
+<span class="cb-stat-number">2023</span>
+<span class="cb-stat-label">científico de datos desde</span>
+</div>
+</div>
+</div>
+</section>
