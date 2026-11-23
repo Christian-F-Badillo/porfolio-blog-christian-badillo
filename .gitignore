@@ -1,0 +1,10 @@
+# Ignore VSCode files
+.vscode/
+
+#Ignore Local Quarto stuffs
+_site/
+.quarto/
+
+
+/.quarto/
+**/*.quarto_ipynb
