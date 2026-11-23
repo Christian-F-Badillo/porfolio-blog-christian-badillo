@@ -28,21 +28,37 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+    
       - name: Setup Quarto
         if: inputs.step == 'all' || inputs.step == 'render' || inputs.step == ''
         uses: quarto-dev/quarto-actions/setup@v2
-
+    
       - name: Render site
         if: inputs.step == 'all' || inputs.step == 'render' || inputs.step == ''
         run: quarto render
-
+    
+      - name: Save _site artifact
+        if: inputs.step == 'all' || inputs.step == 'render' || inputs.step == ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: quarto-site
+          path: _site/
+          retention-days: 1
+    
+      - name: Restore _site artifact
+        if: inputs.step == 'sync'
+        uses: actions/download-artifact@v4
+        with:
+          name: quarto-site
+          path: _site/
+    
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v6.2.4
+        if: inputs.step == 'all' || inputs.step == 'sync' || inputs.step == ''
+        uses: aws-actions/configure-aws-credentials@v6.2.3
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
-
+    
       - name: Sync to S3
         if: inputs.step == 'all' || inputs.step == 'sync' || inputs.step == ''
         run: |
